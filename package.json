@@ -1,0 +1,22 @@
+{
+  "name": "acrosticon",
+  "version": "0.0.0",
+  "description": "An acrostic poem generator",
+  "main": "app.js",
+  "dependencies": {
+    "systemjs": "^0.11.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://DuncanMacWeb@bitbucket.org/DuncanMacWeb/acrosticon.git"
+  },
+  "keywords": [
+    "acrosticon"
+  ],
+  "author": "Tom Scholl and Duncan MacKenzie",
+  "license": "MIT"
+}
