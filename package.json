@@ -8,7 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test/test.js"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
