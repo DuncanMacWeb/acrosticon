@@ -4,11 +4,12 @@
   "description": "An acrostic poem generator",
   "main": "app.js",
   "dependencies": {
+    "6to5": "^2.13.1",
     "systemjs": "^0.11.2"
   },
   "devDependencies": {},
   "scripts": {
-    "main": "6to5 app.js"
+    "main": "6to5 app.js",
     "test": "jasmine"
   },
   "repository": {
