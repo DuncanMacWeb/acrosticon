@@ -32,6 +32,7 @@ sudo cp -r bin include lib share /usr/local/
 
 # update npm if needed
 sudo npm install npm -g
+sudo npm install -g jasmine
 
 # install all npm modules the app requires
 su - vagrant -c "cd /vagrant; npm install"
