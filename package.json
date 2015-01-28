@@ -7,7 +7,9 @@
     "6to5": "^2.13.1",
     "systemjs": "^0.11.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-sourcemaps": "^1.3.0"
+  },
   "scripts": {
     "main": "6to5 app.js",
     "test": "jasmine"
