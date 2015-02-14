@@ -33,7 +33,7 @@ sudo cp -r bin include lib share /usr/local/
 # update npm if needed
 sudo npm install npm -g
 sudo npm install -g jasmine
-sudo npm install -g gulp
+sudo npm install -g gulp@3.8.10
 sudo npm install -g 6to5
 # jadum is a jade fork that plays well with taunus
 sudo npm install -g jadum
