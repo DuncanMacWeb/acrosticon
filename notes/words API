@@ -1,0 +1,17 @@
+GET /entries
+  { stem: string,
+    nextletters: [apxz],
+    maxresults: int, // pass in 0 if you don't want info about words
+    sort: popularity|alphabetical|...
+    language: ISO code,
+     }
+  => returns [{
+    stem: string,
+    no of words,
+    cumulative popularity
+    words: [{
+      word: 'foo',
+      popularity: index in frequency lists
+      frequency: times per trillion
+    }, ...]
+  }, ...]
