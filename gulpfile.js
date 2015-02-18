@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var sourcemaps = require('gulp-sourcemaps');
-var to5 = require('gulp-6to5');
+var to5 = require('gulp-babel');
 var shell = require('gulp-shell')
 
 
