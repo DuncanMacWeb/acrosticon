@@ -90,7 +90,10 @@ const Main = React.createClass({
 	 */
 	render() {
 		return (
-			<main></main>
+			<main>
+				<h1>Acrosticon</h1>
+				<p>Give me your words and I’ll find you an acrostic poem</p>
+			</main>
 		);
 	}
 });
