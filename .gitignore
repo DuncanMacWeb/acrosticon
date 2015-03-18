@@ -1,0 +1,5 @@
+node_modules/
+.vagrant
+dist/
+npm-debug.log
+.bin/
