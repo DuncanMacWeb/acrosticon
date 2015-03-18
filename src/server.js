@@ -53,7 +53,7 @@ server.ext("onPreResponse", (request, reply) => {
 				<html lang="en-us">
 					<head>
 						<meta charset="utf-8">
-						<title>react-isomorphic-starterkit</title>
+						<title>Acrosticon</title>
 						<link rel="shortcut icon" href="/favicon.ico">
 					</head>
 					<body>
