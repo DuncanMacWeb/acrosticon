@@ -31,6 +31,8 @@ const Main = React.createClass({
 			/**
 			 * Load the rest of the stargazers on the client.
 			 */
+			console.log("this.state:");
+			console.log(this.state);
 			Main.loadStargazersFn(this.state.stargazers || [], true, 2, (error, state) => {
 				this.setState(state);
 			});
@@ -124,7 +126,7 @@ const Main = React.createClass({
 				<h3>Community</h3>
 				<p>
 					<a href={repositoryUrl} title="you here? star us!">
-					{this.state.stargazers.map((user) => {
+					{(this.state.stargazers || []).map((user) => {
 						return <img key={user.id} className="avatar" src={avatarUrl(user.id)} title={user.login} alt={user.login} />;
 					})}
 						<img className="avatar" src={avatarUrl(0)} alt="you?" />
