@@ -34,7 +34,7 @@ const Main = React.createClass({
 			Main.loadStargazersFn(this.state.stargazers || [], true, 2, (error, state) => {
 				this.setState(state);
 			});
-		} */
+		}
 	},
 	statics: {
 		/**
@@ -66,12 +66,36 @@ const Main = React.createClass({
 		 * your component with `&` and its children with `& selectors`. Be specific.
 		 * You're not required to use this helper component.
 		 */
-		/* css: (avatarSize) => `` */
+		css: (avatarSize) => `
+			& .github {
+				position: absolute;
+				top: 0;
+				right: 0;
+				border: 0;
+			}
+			& {
+				font-family: sans-serif;
+				color: #0df;
+				padding: 10px 30px 30px;
+				width: 380px;
+				margin: 10px auto;
+				background: #222;
+			}
+			& .avatar {
+				border-radius: 50%;
+				width: ${avatarSize}px;
+				height: ${avatarSize}px;
+				margin: 0 2px 2px 0;
+			}`
 	},
 	/**
 	 * Server and client.
 	 */
 	render() {
+		const repositoryUrl = "https://github.com/RickWong/react-isomorphic-starterkit";
+		const avatarSize = 32;
+		const avatarUrl = (id) => `https://avatars.githubusercontent.com/u/${id}?v=3&s=${avatarSize}`;
+
 		return (
 			<InlineCss stylesheet={Main.css(avatarSize)} namespace="Main">
 				<a className="github" href={repositoryUrl}>
