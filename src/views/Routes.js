@@ -30,7 +30,12 @@ var InputPoem = React.createClass({
 	render: function () {
 		return (
 			<div>
-				<h2>Input poem</h2>
+				<h2>Type in your poem here...</h2>
+				<form action="/poem/" method="post">
+					<textarea name="poem" rows="10"></textarea>
+					<br/>
+					<button type="submit">Find acrostics!</button>
+				</form>
 				<RouteHandler/>
 			</div>
 		);
