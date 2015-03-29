@@ -2,8 +2,8 @@ import React from "react";
 import Router, {Route, DefaultRoute} from "react-router";
 import Main from "views/Main";
 
-var Link = Router.Link;
-var RouteHandler = Router.RouteHandler;
+/* var Link = Router.Link;
+var RouteHandler = Router.RouteHandler; */
 
 
 var App = React.createClass({
@@ -55,12 +55,10 @@ var AcrosticResults = React.createClass({
 });
 
 
-var routes = (
-	<Route name="app" path="/" handler={App}>
+export default (
+	<Route path="/">
 		<Route name="poem" path="/poem/" handler={InputPoem}/>
 		<Route name="results" path="/acrostics/" handler={AcrosticResults}/>
 		<DefaultRoute handler={Main}/>
 	</Route>
 );
-
-export default routes;
