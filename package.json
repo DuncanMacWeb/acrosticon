@@ -1,7 +1,7 @@
 {
   "name": "react-isomorphic-starterkit",
   "description": "Isomorphic starterkit with server-side React rendering.",
-  "version": "1.4.0",
+  "version": "2.0.1",
   "license": "BSD-3",
   "repository": {
     "type": "git",
@@ -19,8 +19,8 @@
   ],
   "main": "babel.server.js",
   "scripts": {
-    "start": "NODE_PATH=\"$(pwd)/src\" supervisor --no-restart-on error --watch src/ ./babel.server",
-    "localhost": "sleep 2; which open && open http://localhost:8000",
+    "start": "NODE_PATH=\"./src\" node ./babel.server",
+    "localhost": "sleep 1; which open && open http://localhost:8000",
     "browser": "sleep 2; concurrent 'npm run start' 'npm run localhost'",
     "build": "webpack --verbose --colors --display-error-details --config webpack.client.js",
     "watch-client": "webpack --verbose --colors --display-error-details --config webpack.client-watch.js && webpack-dev-server --config webpack.client-watch.js",
@@ -28,23 +28,22 @@
   },
   "dependencies": {
     "babel": "4.7.16",
-    "fibers": "1.0.5",
     "hapi": "8.4.0",
+    "piping": "0.1.7",
     "react": "0.12.2",
     "react-a11y": "0.0.6",
-    "react-async": "2.0.1",
     "react-inline-css": "1.1.1",
     "react-router": "0.12.4",
-    "superagent": "1.1.0"
+    "react-transmit": "2.1.0",
+    "isomorphic-fetch": "2.0.0"
   },
   "devDependencies": {
-    "babel-core": "4.7.12",
+    "babel-core": "4.7.16",
     "babel-loader": "4.2.0",
-    "babel-runtime": "4.7.12",
+    "babel-runtime": "4.7.16",
     "concurrently": "0.0.5",
     "json-loader": "0.5.1",
-    "react-hot-loader": "1.2.3",
-    "supervisor": "0.6.0",
+    "react-hot-loader": "1.2.4",
     "webpack": "1.7.3",
     "webpack-dev-server": "1.7.0"
   },
