@@ -1,10 +1,11 @@
 import React from "react";
 import Router, {Route, DefaultRoute} from "react-router";
 import Main from "views/Main";
+import Transmit from "react-transmit";
+import __fetch from "isomorphic-fetch";
 
-/* var Link = Router.Link;
-var RouteHandler = Router.RouteHandler; */
-
+var Link = Router.Link;
+var RouteHandler = Router.RouteHandler;
 
 var App = React.createClass({
 	render: function () {
@@ -54,11 +55,43 @@ var AcrosticResults = React.createClass({
 	}
 });
 
+const WrappedApp = Transmit.createContainer(App, {
+	queryParams: {
+		prevStargazers: [],
+		nextPage: 1,
+		pagesToFetch: 22
+	},
+	queries: {
+		stargazers (queryParams) {
+			/**
+			 * Return a Promise of all the stargazers.
+			 */
+			return fetch(
+				`https://api.github.com/repos/RickWong/react-isomorphic-starterkit/stargazers?per_page=100&page=${queryParams.nextPage}`
+			).then((response) => {
+				return response.json();
+			}).then((page) => {
+				if (!page || !page.length) {
+					queryParams.pagesToFetch = 0;
+					return queryParams.prevStargazers;
+				}
+
+				const stargazers = page.map((user) => ({
+					id: user.id,
+					login: user.login
+				}));
+
+				return queryParams.prevStargazers.concat(stargazers);
+			});
+		}
+	}
+});
+
 
 export default (
-	<Route path="/">
-		<Route name="poem" path="/poem/" handler={InputPoem}/>
-		<Route name="results" path="/acrostics/" handler={AcrosticResults}/>
-		<DefaultRoute handler={Main}/>
+	<Route path="/" name="app" handler={WrappedApp}>
+			<Route name="poem" path="/poem/" handler={InputPoem}/>
+			<Route name="results" path="/acrostics/" handler={AcrosticResults}/>
+			<DefaultRoute handler={Main}/>
 	</Route>
 );
