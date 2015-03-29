@@ -28,9 +28,9 @@ cd ~
 #tar -zxf node-v0.10.36-linux-x86.tar.gz
 #cd node-v0.10.36-linux-x86
 #sudo cp -r bin include lib share /usr/local/
-wget http://nodejs.org/dist/v0.12.0/node-v0.12.0-linux-x86.tar.gz
-tar -zxf node-v0.12.0-linux-x86.tar.gz
-cd node-v0.12.0-linux-x86
+wget http://nodejs.org/dist/v0.12.1/node-v0.12.1-linux-x86.tar.gz
+tar -zxf node-v0.12.1-linux-x86.tar.gz
+cd node-v0.12.1-linux-x86
 sudo cp -r bin include lib share /usr/local/
 
 
