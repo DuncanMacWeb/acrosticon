@@ -63,25 +63,8 @@ const WrappedApp = Transmit.createContainer(App, {
 	},
 	queries: {
 		stargazers (queryParams) {
-			/**
-			 * Return a Promise of all the stargazers.
-			 */
-			return fetch(
-				`https://api.github.com/repos/RickWong/react-isomorphic-starterkit/stargazers?per_page=100&page=${queryParams.nextPage}`
-			).then((response) => {
-				return response.json();
-			}).then((page) => {
-				if (!page || !page.length) {
-					queryParams.pagesToFetch = 0;
-					return queryParams.prevStargazers;
-				}
-
-				const stargazers = page.map((user) => ({
-					id: user.id,
-					login: user.login
-				}));
-
-				return queryParams.prevStargazers.concat(stargazers);
+			return new Promise(function (resolve, reject) {
+				resolve();
 			});
 		}
 	}
