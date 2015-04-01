@@ -63,7 +63,7 @@ const WrappedApp = Transmit.createContainer(App, {
 	},
 	queries: {
 		stargazers (queryParams) {
-			return new Promise(function (resolve, reject) {
+			return new Promise((resolve) => {
 				resolve();
 			});
 		}
