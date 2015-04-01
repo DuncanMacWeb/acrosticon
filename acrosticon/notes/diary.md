@@ -7,6 +7,8 @@ Added a simple 'hapi' POST route for inputting the poem which then runs the find
 I am still unsure how isomorphic-lab handles a non-js POST, which then renders the react componants again. There seems to be a react-router-middlewhere which captures the POST params in the url field, yuck!
 For now, am focussing on getting it working server-side. 
  -- Tom
+
+Ran into problems refactoring to make it simple to create React/Transmit components by passing in just JSX. There is a bug that seems to annoy the Link component no end that's still unresolved.
  
 ## 29 March 2015
 
