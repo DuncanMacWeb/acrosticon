@@ -3,6 +3,7 @@ import Router, {Route, DefaultRoute} from "react-router";
 import Main from "views/Main";
 import Transmit from "react-transmit";
 import __fetch from "isomorphic-fetch";
+import {sonnet18 as sonnet} from '../../acrosticon/data/sonnet'
 
 var Link = Router.Link;
 var RouteHandler = Router.RouteHandler;
@@ -33,7 +34,7 @@ var InputPoem = React.createClass({
 			<div>
 				<h2>Type in your poem here...</h2>
 				<form action="/poem/" method="post">
-					<textarea name="poem" rows="10"></textarea>
+					<textarea name="poem" rows="10" defaultValue={sonnet}></textarea>
 					<br/>
 					<button type="submit">Find acrostics!</button>
 				</form>

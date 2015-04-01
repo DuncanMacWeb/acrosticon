@@ -4,11 +4,11 @@ import {loadBigramCounts, loadDictionary, loadStemgrams} from './words-data'
 import {sonnet18 as sonnet} from '../data/sonnet'
 
 let words = [for (line of sonnet.split('\n')) for (word of line.split(' ')) word]
-let firstletters = [for (word of words) word[0].toLowerCase()].join('')
+let firstlettersdefault = [for (word of words) word[0].toLowerCase()].join('')
 
-//firstletters = "tmadfhneasaavegweewfd";
+//firstlettersdefault = "tmadfhneasaavegweewfd";
 
-console.log(firstletters)
+console.log(firstlettersdefault)
 
 //console.log(loadBigramCounts().then(b => b.toString()))
 
@@ -46,7 +46,7 @@ const maxInterval = 10;
 const maxWordLength = 8;
 
     
-var findWords = function* (bigramScores, dictionary, stemgrams) {
+var findWords = function* (firstletters, bigramScores, dictionary, stemgrams) {
   // possibleStems tracks the start-of-word permutations (stems) we want to investigate as
   // possible begininnings of dictionary words. 
   //
@@ -138,8 +138,9 @@ var findWords = function* (bigramScores, dictionary, stemgrams) {
   
   console.log("finished");
 };
+exports.findWords = findWords;
 
-function printAcrostic(poemWords, indices, sentence) {
+export function printAcrostic(poemWords, indices, sentence) {
   console.log("--------------------\n" + sentence);
   let j = 0;
   let str = "";
@@ -155,6 +156,7 @@ function printAcrostic(poemWords, indices, sentence) {
 
 }
 
+/*
 loadBigramCounts().then(bigramScores => {  
   
   loadDictionary().then(dictionary => {
@@ -162,7 +164,7 @@ loadBigramCounts().then(bigramScores => {
     loadStemgrams().then(stemgrams => {
 
 
-      let generator = findWords(bigramScores, dictionary, stemgrams);
+      let generator = findWords(firstlettersdefault, bigramScores, dictionary, stemgrams);
       let n = 1;
       for (let item of generator) {
         printAcrostic(words, item.indices, item.sentence);
@@ -177,13 +179,13 @@ loadBigramCounts().then(bigramScores => {
     });
     
   }).catch(function (ex) {
-    /* In IO.js, promises silently swallow exceptions unless you do the following:
-     * (https://github.com/iojs/io.js/issues/600, oddly this seems to be by design)
-     */
+     // In IO.js, promises silently swallow exceptions unless you do the following:
+     // (https://github.com/iojs/io.js/issues/600, oddly this seems to be by design)
+     //
     setTimeout(function () {throw ex;}, 0);
   });
 }).catch(function (ex) {
   setTimeout(function () {throw ex;}, 0);
 });
-
+*/
 
