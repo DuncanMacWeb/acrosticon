@@ -9,6 +9,7 @@ For now, am focussing on getting it working server-side.
  -- Tom
 
 Ran into problems refactoring to make it simple to create React/Transmit components by passing in just JSX. There is a bug that seems to annoy the Link component no end that's still unresolved.
+  -- Duncan
  
 ## 29 March 2015
 
