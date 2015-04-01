@@ -1,6 +1,13 @@
 Diary
 =====
 
+## 1 April 2015
+
+Added a simple 'hapi' POST route for inputting the poem which then runs the find words algorithm. For now, it just prints the results to the (server's) console.
+I am still unsure how isomorphic-lab handles a non-js POST, which then renders the react componants again. There seems to be a react-router-middlewhere which captures the POST params in the url field, yuck!
+For now, am focussing on getting it working server-side. 
+ -- Tom
+ 
 ## 29 March 2015
 
 Merged in the latest changes (including v2) of the starter kit. Grappled with IPC errors with node for a long time (only on my machine). Finally I found that going back to node version 0.10 fixed the errors (using nvm, no Vagrant). Fixed react-routing errors (hung server) that required wrapping with react-transmit.
