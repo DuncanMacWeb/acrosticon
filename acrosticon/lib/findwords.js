@@ -2,15 +2,8 @@ require("babel/register");
 
 import {loadBigramCounts, loadDictionary, loadStemgrams} from './words-data'
 import {sonnet18 as sonnet} from '../data/sonnet'
-
-let words = [for (line of sonnet.split('\n')) for (word of line.split(' ')) word]
-let firstlettersdefault = [for (word of words) word[0].toLowerCase()].join('')
-
-//firstlettersdefault = "tmadfhneasaavegweewfd";
-
-console.log(firstlettersdefault)
-
-//console.log(loadBigramCounts().then(b => b.toString()))
+var stemgramsJson = require('../data/stemgrams.json');
+var dictionaryJson = require('../data/dictionary.json');
 
 
 
@@ -46,7 +39,7 @@ const maxInterval = 10;
 const maxWordLength = 8;
 
     
-var findWords = function* (firstletters, bigramScores, dictionary, stemgrams) {
+var findWordsInternal = function* (firstletters, bigramScores, dictionary, stemgrams) {
   // possibleStems tracks the start-of-word permutations (stems) we want to investigate as
   // possible begininnings of dictionary words. 
   //
@@ -138,6 +131,18 @@ var findWords = function* (firstletters, bigramScores, dictionary, stemgrams) {
   
   console.log("finished");
 };
+
+
+function findWords(sonnet) {
+		let words = [for (line of sonnet.split('\n')) for (word of line.split(' ')) word];
+		let firstletters = [for (word of words) word[0].toLowerCase()].join('');
+		
+		var bigramScores = {};
+		let wordsGenerator = findWordsInternal(firstletters, bigramScores, dictionaryJson, stemgramsJson);
+		return [wordsGenerator, words];
+}
+
+
 exports.findWords = findWords;
 
 export function printAcrostic(poemWords, indices, sentence) {
@@ -157,6 +162,14 @@ export function printAcrostic(poemWords, indices, sentence) {
 }
 
 /*
+let words = [for (line of sonnet.split('\n')) for (word of line.split(' ')) word]
+let firstlettersdefault = [for (word of words) word[0].toLowerCase()].join('')
+
+//firstlettersdefault = "tmadfhneasaavegweewfd";
+
+console.log(firstlettersdefault)
+
+
 loadBigramCounts().then(bigramScores => {  
   
   loadDictionary().then(dictionary => {
@@ -164,7 +177,7 @@ loadBigramCounts().then(bigramScores => {
     loadStemgrams().then(stemgrams => {
 
 
-      let generator = findWords(firstlettersdefault, bigramScores, dictionary, stemgrams);
+      let generator = findWordsInternal(firstlettersdefault, bigramScores, dictionary, stemgrams);
       let n = 1;
       for (let item of generator) {
         printAcrostic(words, item.indices, item.sentence);
