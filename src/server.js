@@ -5,9 +5,6 @@ import Transmit from "react-transmit";
 import routes from "views/Routes";
 
 import {findWords, printAcrostic} from "../acrosticon/lib/findwords";
-var stemgrams = require('../acrosticon/data/stemgrams.json');
-var dictionary = require('../acrosticon/data/dictionary.json');
-var querystring = require('querystring');
 
 /**
  * Start Hapi server on port 8000.
@@ -23,17 +20,14 @@ server.route({
 	handler: (request, reply) => {
 		
 		console.log("POST HANDLER");
-	
-		var sonnet = request.payload.poem;
-		console.log("sonnet = " + sonnet);
-		let words = [for (line of sonnet.split('\n')) for (word of line.split(' ')) word];
-		let firstletters = [for (word of words) word[0].toLowerCase()].join('')
 		
-		var bigramScores = {};
-		let generator = findWords(firstletters, bigramScores, dictionary, stemgrams);
+		let sonnet = request.payload.poem;
+		console.log("sonnet = " + sonnet);
+		
+		let [wordsGenerator, words] = findWords(sonnet);
 		let n = 1;
-		for (let item of generator) {
-			printAcrostic(words, item.indices, item.sentence);
+		for (let acrostic of wordsGenerator) {
+			printAcrostic(words, acrostic.indices, acrostic.sentence);
 			if (n > 10) {
 				break;
 			}
