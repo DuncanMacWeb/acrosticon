@@ -1,6 +1,11 @@
 Diary
 =====
 
+## 12 April 2015
+
+Refactored some acrostic crunching code out from server.js to findwords.js. Then tried to add a url param for /acrostics/:acrosticId but hit errors. Also had problems saving db state in global variables before apres-POST redirect. Next step is probably to do a mini React project using url params, to see if I can get that working - potentially the errors are being introduced by react-transmit.
+ -- Tom
+
 ## 1 April 2015
 
 Added a simple 'hapi' POST route for inputting the poem which then runs the find words algorithm. For now, it just prints the results to the (server's) console.
