@@ -6,6 +6,9 @@ Diary
 Refactored some acrostic crunching code out from server.js to findwords.js. Then tried to add a url param for /acrostics/:acrosticId but hit errors. Also had problems saving db state in global variables before apres-POST redirect. Next step is probably to do a mini React project using url params, to see if I can get that working - potentially the errors are being introduced by react-transmit.
  -- Tom
 
+Attempted to merge in latest changes to react-isomorphic-starterkit, including babel@5.x but it suddenly isn’t happy with `let words = [for (line of lines) for (word of line.words) word]`, and we can’t find the root of this bug. React-isomorphic-starterkit itself works with latest changes, so intending to manually merge in the differences to find the problem, focusing on src/server.js and src/views/Router.js. One possibility to consider is that Babel doesn’t play well with for..of loops any more!?!
+ -- Duncan
+
 ## 1 April 2015
 
 Added a simple 'hapi' POST route for inputting the poem which then runs the find words algorithm. For now, it just prints the results to the (server's) console.
