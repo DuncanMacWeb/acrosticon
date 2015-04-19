@@ -5,6 +5,9 @@ Diary
 
 Updated to react-isomorphic-startkit 2.3.0. Refactored the views into separate modules and turned the React components into ES6 classes.... all with success! Something must be amiss ;-)
  -- Duncan
+ 
+Fixed Babel to use stage 0 rather than 1 as we need comprehensions support. Made new branch, 'react-router-test' to try and get the url param '/acrostics/:acrosticId' to work in a new project. Oddly enough it gives me the same error, even without react-transmit, so further investigation is needed...
+ -- Tom
 
 ## 12 April 2015
 
