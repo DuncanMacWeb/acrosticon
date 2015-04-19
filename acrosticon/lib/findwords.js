@@ -1,4 +1,6 @@
-require("babel/register");
+require("babel/register")({
+	stage: 0
+});
 
 import {loadBigramCounts, loadDictionary, loadStemgrams} from './words-data'
 import {sonnet18 as sonnet} from '../data/sonnet'
