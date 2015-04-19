@@ -1,12 +1,9 @@
 import React from "react";
-import {Route, DefaultRoute} from "react-router";
+import {Route, DefaultRoute, Link, RouteHandler} from "react-router";
 import Main from "views/Main";
 import Transmit from "react-transmit";
 import __fetch from "isomorphic-fetch";
 import {sonnet18 as sonnet} from '../../acrosticon/data/sonnet'
-
-var Link = Router.Link;
-var RouteHandler = Router.RouteHandler;
 
 var App = React.createClass({
 	render: function () {
