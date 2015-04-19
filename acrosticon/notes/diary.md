@@ -1,6 +1,11 @@
 Diary
 =====
 
+## 19 April 2015
+
+Updated to react-isomorphic-startkit 2.3.0. Refactored the views into separate modules and turned the React components into ES6 classes.... all with success! Something must be amiss ;-)
+ -- Duncan
+
 ## 12 April 2015
 
 Refactored some acrostic crunching code out from server.js to findwords.js. Then tried to add a url param for /acrostics/:acrosticId but hit errors. Also had problems saving db state in global variables before apres-POST redirect. Next step is probably to do a mini React project using url params, to see if I can get that working - potentially the errors are being introduced by react-transmit.
