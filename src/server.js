@@ -3,6 +3,9 @@ import React from "react";
 import Router from "react-router";
 import Transmit from "react-transmit";
 import routes from "views/Routes";
+import url from "url";
+
+var hostname = process.env.HOSTNAME || "localhost";
 
 import {findWords, printAcrostic} from "../acrosticon/lib/findwords";
 
@@ -10,8 +13,11 @@ import {findWords, printAcrostic} from "../acrosticon/lib/findwords";
  * Start Hapi server on port 8000.
  */
 const server = new Server();
-server.connection({port: process.env.PORT || 8000});
-server.start();
+server.connection({host: hostname, port: process.env.PORT || 8000});
+server.start(function () {
+	console.info("==> ✅  Server is listening");
+	console.info("==> 🌎  Go to " + server.info.uri.toLowerCase());
+});
 
 
 server.route({
@@ -52,6 +58,27 @@ server.route({
 });
 
 /**
+ * Endpoint that proxies all GitHub API requests to https://api.github.com.
+ */
+server.route({
+	method: "*",
+	path: "/api/github/{path*}",
+	handler: {
+		proxy: {
+			passThrough: true,
+			mapUri (request, callback) {
+				callback(null, url.format({
+					protocol: "https",
+					host:     "api.github.com",
+					pathname: request.params.path,
+					query:    request.query
+				}));
+			}
+		}
+	}
+});
+
+/**
  * Catch dynamic requests here to fire-up React Router.
  */
 server.ext("onPreResponse", (request, reply) => {
@@ -60,9 +87,7 @@ server.ext("onPreResponse", (request, reply) => {
 	}
 	
 	Router.run(routes, request.path, (Handler, router) => {
-		Transmit.renderToString(
-			Handler
-		).then(({reactString, reactData}) => {
+		Transmit.renderToString(Handler).then(({reactString, reactData}) => {
 			let output = (
 				`<!doctype html>
 				<html lang="en-us">
@@ -77,7 +102,7 @@ server.ext("onPreResponse", (request, reply) => {
 				</html>`
 			);
 
-			const webserver = process.env.NODE_ENV === "production" ? "" : "//localhost:8080";
+			const webserver = process.env.NODE_ENV === "production" ? "" : "//" + hostname + ":8080";
 			output = Transmit.injectIntoMarkup(output, reactData, [`${webserver}/dist/client.js`]);
 
 			reply(output);

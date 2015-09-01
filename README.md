@@ -13,8 +13,7 @@ Isomorphic starterkit with server-side React rendering using
 [react-router](https://github.com/rackt/react-router), 
 [react-hot-loader](https://gaearon.github.io/react-hot-loader), 
 [react-transmit](https://github.com/RickWong/react-transmit),
-[react-inline-css](https://github.com/RickWong/react-inline-css),
-[react-a11y](https://github.com/rackt/react-a11y)
+[react-inline-css](https://github.com/RickWong/react-inline-css)
 
 ## Features
 
@@ -32,16 +31,17 @@ It just works out-of-the-box.
 
 ## Installation
 
+```bash
 	git clone https://github.com/RickWong/react-isomorphic-starterkit.git
 	cd react-isomorphic-starterkit
 	
-	npm install -g concurrently webpack webpack-dev-server
 	npm install
-	npm run watch     # yes, one command for server and client development!
+	npm run watch     # Yes, ONE command for server AND client development!
 	
 	# production build and run
 	NODE_ENV=production npm run build
-	NODE_ENV=production npm run browser  
+	NODE_ENV=production npm run start  
+```
 
 ## Usage
 
